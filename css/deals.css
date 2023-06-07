@@ -1,0 +1,439 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
+  body{
+    background-color: lightgray;
+    font-style: arial;
+    
+  }
+  
+  
+  
+  
+  
+  /* menu css */
+  #hemu{
+    width: 100%;
+    color: white;
+    height: auto;
+    background-color: #1223E4;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 1px 5px grey;
+    
+  }
+  #hemu #logo {
+    display: flex;
+    align-items: center;
+    margin: 0px 0px;
+  }
+  
+  #hemu
+   #mnicon{
+    display: none;
+  }
+  #hemu a p{
+    color: white;
+    font-size: 22px;
+  }
+  #hemu a{
+    text-decoration: none;
+    color: white;
+  }
+  #hemu #logo a{
+    text-decoration: none;
+    margin-left: 60px;
+  }
+  
+  #menug ul{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  
+    margin-right: 50px;
+    list-style-type: none;
+  }
+  #menug a{
+   color: white;
+  }
+  #menug ul li{
+    margin: 0px 15px;
+    display: inline-block;
+    
+  }
+  
+  
+  
+  
+  
+    
+  
+  @media(max-width: 1000px){
+    
+  }
+  
+  @media(max-width: 700px){
+    #menug{
+    width: 100%; 
+    
+    }
+  
+  #hemu{
+    /* overflow: auto; */
+    width: 100%;
+    display: block;
+    color: white;
+    justify-content: left;
+    background-color: #0114E8;
+  }
+  #hemu p{
+    margin-left: 10px;
+    
+    
+  }
+  
+  #hemu #logo a{
+    text-decoration: none;
+    margin-left: 0px;
+  }
+  #menug ul{
+    width: 100%;
+    background-color: antiquewhite;
+    /* background-color:#4957F5; */
+    margin: 0px;
+    
+  }
+  #menug ul li{
+    text-align: center;
+    color: black;
+    width: 100%;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    
+    
+  }
+  
+  #menug  ul li:hover{
+    background-color: rgb(248, 178, 178);
+    
+  }
+  .notvisi{
+    display: none;
+  }
+  
+  
+  
+  #hemu #mnicon{
+    display: inline-block;
+    margin: 15px 20px;
+    
+  }
+  
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+#smain{
+  margin:  20px 0px 10px 0px; 
+  display: flex;
+  justify-content: space-evenly;
+  }
+  
+  
+  #main {
+    
+    
+    width: 65%;
+    margin: 0px 0px 0px 30px;
+    background-color: rgb(243, 235, 235);
+    /* text-align: center;
+    padding: 20px;
+    background-color: #B9BBCD;
+    border-radius: 5px;
+    margin-top: 10px; */
+    
+  }
+  
+  
+
+  
+  #loading{
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  
+  #main #head{
+    text-align: center;
+    margin-top: 10px;
+  }
+  #main .ndiv{
+    display: flex;
+    background-color: #ffffff;
+    margin: 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(196, 196, 196);
+     /* text-align: center;  */
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+
+ #main .spec{
+    
+    background-color: #ffffff;
+    margin: 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(196, 196, 196);
+     
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  #main .ndiv h1{
+    color: black;
+    font-size: 26px;
+    
+
+  }
+  #main .ndiv p{
+   color: black;
+   font-size: 20px;
+  }
+
+  #main .ndiv .details h2{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    margin:10px 10px 0px 0px;
+    font-weight: bolder;
+    /* text-align: justify; */
+    /* font-size: 30px; */
+    color:black;
+  }
+
+  #main .spec h3, .ndiv .details h3{
+    margin:10px 10px 0px 0px;
+    font-weight: bolder;
+    text-align: justify;
+    /* font-size: 30px; */
+    color:black;
+  }
+  #main .ndiv h2{
+    font-size: 26px;
+    
+  }
+
+  
+  
+  
+  #main .ndiv .details .price{
+     margin:12px 0px 8px 0px; 
+     color:black;
+    text-align: justify;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.0;
+    text-decoration: none;
+  }
+
+  #main .ndiv .details .mrp{
+    font-size: 15px;
+    color: gray;
+  }
+
+  #main .ndiv .details .but{
+  background-color: rgb(15, 102, 233);
+  font-size: 20px;
+  padding: 8px;
+  margin: 15px 0px;
+  border-radius: 15px;
+  display: block;
+  }
+  #main .ndiv .details a{
+    color: black;
+  }
+
+
+  #main .ndiv .details .rat{
+    display: inline-block;
+    margin: 10px 0px;
+    padding: 2px;
+    border-radius: 2px;
+    background-color: green;
+    color: white;
+  }
+  /* #main .ndiv .para{
+    font-weight: 400;
+    margin-bottom: 10px; 
+    
+  }*/
+  #main .ndiv .img{
+    display: flex;
+    min-height: 250px;
+    max-height: 280px;
+    min-width: 200px;
+    margin: 10px;
+    justify-content: center;  
+    align-items: center;
+    
+  }
+  #main .ndiv .img img{
+    max-height: 250px;
+    max-width: 200px;
+    
+  
+  }
+  #main .ndiv a{
+    /* margin:10px 10px; */
+    text-decoration: none;
+    /* color:black; */
+    text-align: center;
+    
+  }
+
+  #main .ndiv .link{
+    color: rgb(3, 3, 78);
+    font-size: 20px;
+  }
+
+  #main .ndiv li{
+    list-style-type: none;
+    font-size: 20px;
+  }
+
+  #titl{
+ width: 25%;
+ margin: 0px 30px 0px 0px;
+
+
+ /* background-color: rgb(255, 255, 255); */
+  }
+
+  #title  p, .about p{
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    margin: 2px;
+  }
+
+  #title a{
+    text-decoration: none;
+  }
+
+  #load{
+    
+  margin: 0px 0px 30px px;
+  text-align: center;
+  
+  }
+
+  #load button{
+    margin: 10px 0px 10px 0px;
+    padding: 10px 10px 10px 10px;
+    font-size: 16px;
+    background-color: #bbc0f5;
+    border-radius: 5%;
+  }
+
+  
+    @media (max-width: 1000px) {
+      #main{
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        /* grid-template-columns: repeat(1,1fr); */
+      }
+
+      #smain{
+        margin:  20px 0px 10px 0px; 
+        display: flex;
+        justify-content:unset;
+        
+       }
+       #titl{
+         width: 25%;
+        margin-right: 0 0px 0px 0px;
+        padding: 0px 10px;
+        text-align: center;
+       }
+      
+  } 
+  
+  
+  
+  
+  
+  @media(max-width: 750px){
+    
+  #main{
+    width: 100%;
+    grid-template-columns: repeat(1,1fr);
+  }
+  h1{
+    font-size: 22px;
+  }
+  #smain{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #titl{
+    margin-top: 10px 0px 0px;
+    padding: 10px 10px;
+    width: 100%;
+  }
+
+  /* #titl #title{
+    background-color: white;
+  } */
+  }
+  
+  @media(max-width: 550px){
+    #main{
+      width: 100%;
+      grid-template-columns: repeat(1,1fr);
+    }
+
+    #main .ndiv{
+      display:block;
+      
+    }
+  } 
+  

@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMN4WWQJ9G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MMN4WWQJ9G');
+</script>
+<!-- Google tag (gtag.js) -->
+    <meta content='index,follow' name='robots' />
+    <meta content='Dev Nararan Yadav' name='author' />
+    <meta content='all' name='robots' />
+    <meta content='en' name='language' />
+    <meta content='IN' name='country' />
+    <meta content='TopTechBuzz.xyz :: Best Electronic Deals  ' property='og:title' />
+    <meta
+      content='Best Deals on Top Mobile Brands, Deals, flipkart deals, all flipkart product, online deals, deals on mobiles, deals on earphones, laptops, Gaming_Laptops, DSLR, Printers, Inks, Back_Cases'
+      name='Keywords' />
+    <meta name="description" content="Complete details of the product with price and ratings and purchase link of the product at its lowest and best price from trusted store.">
+    <meta http-equiv='content-language' content='en-in'>
+    
+    
+      <link rel="shortcut icon" href="icons/icon.webp" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techhere:Details of Items</title>
+    <link rel="shortcut icon" href="icons/icon.webp" type="image/x-icon">
+    <link rel="stylesheet" href="css/deals.css">
+</head>
+<body>
+    
+</body>
+<nav id="hemu">
+    <div id="logo">
+
+
+      <img id="mnicon" src="icons/menu_black_24dp.svg" alt="menu" onclick="notvisi()">
+      <a href="/">
+        <h1>Techhere</h1>
+      </a>
+    </div>
+    <div id="menug">
+      <ul id="ul" class="notvisi">
+        <a href="/" alt="toptechbuzz">
+          <li>Home</li>
+        </a>
+     <!--  <a href="blog.html" alt="technews">
+          <li>Blog</li>
+        </a>
+        
+        <a href="news.html/">
+          <li>News</li>
+        </a> 
+-->
+      </ul>
+    </div>
+  </nav>
+
+<div id="smain">
+    <div id="main">
+
+
+    </div>
+
+    <div id='titl'>
+        <div id='title'>
+
+
+        </div>
+        <div class='about'>
+            <p>About us</p>
+            <p>Techhere is a blog website that deals with topics related to tech, deals, offers and new products
+                in the market. We put our efforts to find the best Items. Products for our users at lowest prices.
+            </p>
+        </div>
+        <div class='about'>
+            <p>Facebook Page</p>
+            <a href='https://www.facebook.com/Lowoncost/'>
+                <p>Facebook</p>
+            </a>
+        </div>
+
+    </div>
+
+<script>
+    //title of the page.....................................SEO.........
+    let url = new URLSearchParams(window.location.search);
+    let title = url.get('title');
+    let c = title.split("_").join('/');
+    let s = title.substring(0, title.indexOf('_'));
+    //console.log(s)
+    document.title = "Top Tech Buzz: Full Details of " + s;
+ let meta = document.querySelector('meta[name="description"]');
+    meta.setAttribute("content", `Complete details of the product "+s+" with price and ratings and purchase link of the product at its lowest and best price from trusted store.`);
+//     let meta= document.createElement("meta");
+//     meta.name="description"
+//     meta.content="Complete details of the product "+s+" with price and ratings  and purchase link of the product at its lowest and best price from trusted store.";
+//     document.head.insertAdjacentElement("beforeend", meta);
+
+        fetch("https://flipkart.dvishal485.workers.dev/product/compact/dl/" + c)
+        .then((responce) =>
+            responce.json())
+        .then((data => {
+        console.log(data.specs.length)
+        let lngth=data.specs.length
+        console.log(data)
+        let ndiv = document.createElement("div");
+                    let dimg = document.createElement("div");
+                    let dtls = document.createElement('div');
+                    let img = document.createElement('img');
+                    let para = document.createElement('h1');
+                    let prc = document.createElement('p');
+                    let oprc = document.createElement('p');
+                    let rat = document.createElement('p');
+                    let but = document.createElement('button');
+                    
+                    let h2 = document.createElement('h2');
+                    let link = document.createElement("a");
+
+
+                    ndiv.setAttribute('class', 'ndiv');
+                    dimg.setAttribute('class', 'img');
+                    if(data.thumbnails[0]===undefined){
+                        console.log('not')
+                    }else{
+                        img.setAttribute("src", data.thumbnails[0]);
+                    }
+                    
+                    img.setAttribute("alt", data.name);
+                    dtls.setAttribute('class', 'details');
+                    prc.setAttribute('class', 'price');
+                    oprc.setAttribute('class', 'mrp');
+                    rat.setAttribute('class', 'rat');
+                    //console.log(data1.share_url)
+                    let nppara = data1.share_url;
+                    let linkrep = nppara.replace("https://www.flipkart.com/", "https://www.shopsy.in/")
+                    let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://www.shopsy.in/")
+                    link.setAttribute('href', linkrep1+'?&affid=inf_eda32f80-54f3-4e98-965b-0749dbdd2c8d');
+                    link.setAttribute("target", "_blank")
+
+                    
+                    
+                    //let rep=nppara.replace("https://www.flipkart.com/","")
+                    //let rep1=rep.replace("https://dl.flipkart.com/dl/","")
+                    //let c= rep1.split("/").join('_');
+                    //console.log(c);
+                    //link1.setAttribute('href', "details.html?title="+c);
+                    //link1.setAttribute("target", "blank_")
+                    para.innerText = data.name;
+                    prc.innerText = "Price: " + data.current_price;
+                    oprc.innerText = "MRP: " + data.original_price;
+                    rat.innerText = data.rating;
+                    but.innerText = "Buy Now";
+                    
+                    but.setAttribute('class', 'but');
+                    
+                    h2.innerText = "Specifications:";
+
+
+
+
+
+
+
+
+                    dtls.appendChild(para);
+        dtls.appendChild(prc);
+        dtls.appendChild(oprc);
+        dtls.appendChild(rat);
+        link.appendChild(but);
+
+        dtls.appendChild(link);
+
+        // dtls.appendChild(h2);
+        dimg.appendChild(img);
+        ndiv.appendChild(dimg);
+        ndiv.appendChild(dtls);
+        main.appendChild(ndiv);
+
+
+        let specdiv = document.createElement('div');
+        let specdetais=document.createElement('div')
+
+        specdiv.setAttribute('class', 'spec');
+        specdetais.setAttribute('class', 'details');
+        specdiv.appendChild(h2);
+
+        main.appendChild(specdiv);
+
+
+        for (let i = 0; i <= lngth - 1; i++) {
+          let spec = document.createElement("h3");
+          let specdtls = document.createElement("p");
+
+          spec.innerText = data.specs[i].title + ":"
+          specdtls.innerText = data.specs[i].details
+          //specdtls.setAttribute('class', 'mrp');
+
+
+          // dtls.appendChild(spec)
+          // dtls.appendChild(specdtls)
+          specdiv.appendChild(spec)
+          specdiv.appendChild(specdtls)
+
+
+                
+            }
+        }))
+    </script>
+<script>
+    function notvisi() {
+  
+      let btn = document.getElementById('ul');
+      btn.classList.toggle('notvisi')
+  
+    }
+  </script>
+</html>

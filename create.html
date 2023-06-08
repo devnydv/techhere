@@ -39,7 +39,7 @@
             11: "Headset",
             12: "TWS",
             13: "Wired Headphones",
-            14: "Smart Watches",
+            14: "Hair Dryers",
             15: 'Power Bank',
             16: 'Data Cable',
             17: 'Chargers'
@@ -71,7 +71,7 @@
 
                 .then(responce => responce.json())
                 .then(sortdata => {
-                    for (let index = 0; index < 1; index++) {
+                    for (let index = 0; index < 10; index++) {
 
                         // replace flipkart with para meters required for data.........................................................................
                         let link = sortdata['result'][index]["link"]

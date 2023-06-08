@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create in databse</title>
+    <style>
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="butt"></div>
+
+    <p id="succ"></p>
+
+
+    <script>
+
+        // list of the buttons or category names that are required....................................        
+        let data = {
+            0: "Realme Mobiles",
+            1: "Redmi Mobiles",
+            2: "Narzo Mobiles",
+            3: "Samsung Mobiles",
+            4: 'Infinix Mobiles',
+            5: "Oppo Mobiles",
+            6: "Iphone",
+            7: "Vivo Mobiles",
+
+            8: "Wired Earphones",
+            9: "Neckband",
+            10: "Airpods",
+            11: "Headset",
+            12: "TWS",
+            13: "Wired Headphones",
+            14: "Smart Watches",
+            15: 'Power Bank',
+            16: 'Data Cable',
+            17: 'Chargers'
+        }
+
+
+
+        //select the div and create a button that trigers lol function that fatch the search link......................................
+
+        let dataLength = Object.keys(data)
+        //console.log(dataLength)
+        let div = document.getElementById("butt");
+
+
+
+        dataLength.forEach(num => {
+
+
+            function cbutt() {
+                let butthtmll = `<button value="${data[num]}" onclick="lol(this.value)">${data[num]}</button>`
+                div.insertAdjacentHTML("beforeend", butthtmll)
+            }
+            cbutt()
+        });
+
+        // created a function that runs when the button is clicked and it fetch the serch link .....................................
+ async       function lol(val) {
+       await     fetch("https://flipkart.dvishal485.workers.dev/search/" + `${val}`)
+
+                .then(responce => responce.json())
+                .then(sortdata => {
+                    for (let index = 0; index < 4; index++) {
+
+                        // replace flipkart with para meters required for data.........................................................................
+                        let link = sortdata['result'][index]["link"]
+                        let linkrep = link.replace("https://www.flipkart.com/", "https://flipkart.dvishal485.workers.dev/product/compact/")
+                        let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://flipkart.dvishal485.workers.dev/product/compact/")
+                        //console.log(linkrep1);
+
+                        // fetch the product main link to obtain the data.................................................................................................                        
+                        fetch(linkrep1)
+                            .then(responce => responce.json())
+                            .then(finaldata => {
+                                console.log(finaldata)
+                                let name = finaldata.name
+                               // let rename = name.slice(0, 105);
+                                // write data into firebse database by api fetch method.................................................
+                                let dburl = "https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/" + val + "/items/" + name + ".json"
+                                let dbdata = {
+
+                                    details: finaldata
+
+
+                                }
+                                let jsonData = JSON.stringify(dbdata);
+                                let headers = {
+                                    'content-Type': "application/json",
+                                    'Authorization': 'AIzaSyBlSX_4ucbXP_GXckyG9qZC-1c2ARaAUKY '
+                                }
+                         async   function send(){
+                            await   fetch(dburl, {
+                                    method: 'PUT',
+                                    headeres: 'headers',
+                                    body: jsonData
+                                })
+                                    .then(response => {
+                                        if (response.ok) {
+                                            console.log('saved')
+                                            let succ = document.getElementById('succ');
+                                            succ.innerHTML = 'success';
+
+                                        } else {
+                                            // console.log('error')
+                                        }
+                                    })
+                            
+                                }
+
+send()
+
+
+
+                            });
+
+
+
+
+
+
+
+
+
+
+
+
+                    }
+                });
+            console.log(val)
+        }
+
+
+
+    </script>
+</body>
+
+</html>

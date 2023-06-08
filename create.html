@@ -77,6 +77,7 @@
 
                         // replace flipkart with para meters required for data.........................................................................
                         let link = sortdata['result'][index]["link"]
+                        let name= sortdata["result"][index]['name']
                         let linkrep = link.replace("https://www.flipkart.com/", "https://flipkart.dvishal485.workers.dev/product/compact/")
                         let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://flipkart.dvishal485.workers.dev/product/compact/")
                         //console.log(linkrep1);
@@ -86,7 +87,7 @@
                             .then(responce => responce.json())
                             .then(finaldata => {
                                 console.log(finaldata)
-                                let name = finaldata.name
+                                //let name = finaldata.name
                                // let rename = name.slice(0, 105);
                                 // write data into firebse database by api fetch method.................................................
                                 let dburl = "https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/" + val + "/items/" + name + ".json"

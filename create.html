@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>create in databse</title>
@@ -39,12 +41,18 @@
             11: "Headset",
             12: "TWS",
             13: "Wired Headphones",
-            14: "Hair Dryers",
-            15: 'Power Bank',
-            16: 'Data Cable',
-            17: 'Chargers',
-            18: 'Mouse',
-            19: 'Keyboard'
+
+            14: 'Power Bank',
+            15: 'Data Cable',
+            16: 'Chargers',
+            17: 'Mouse',
+            18: 'Keyboard',
+            19: 'Hair Dryers',
+            20: 'Electronics',
+            21: "smartphones",
+            22: "Air Conditioners",
+            23: 'Refrigerators',
+            24: 'Kitchen Appliances'
         }
 
 
@@ -68,8 +76,8 @@
         });
 
         // created a function that runs when the button is clicked and it fetch the serch link .....................................
- async       function lol(val) {
-       await     fetch("https://flipkart.dvishal485.workers.dev/search/" + `${val}`)
+        async function lol(val) {
+            await fetch("https://flipkart.dvishal485.workers.dev/search/" + `${val}`)
 
                 .then(responce => responce.json())
                 .then(sortdata => {
@@ -77,7 +85,7 @@
 
                         // replace flipkart with para meters required for data.........................................................................
                         let link = sortdata['result'][index]["link"]
-                        let name= sortdata["result"][index]['name']
+                        let name = sortdata["result"][index]['name']
                         let linkrep = link.replace("https://www.flipkart.com/", "https://flipkart.dvishal485.workers.dev/product/compact/")
                         let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://flipkart.dvishal485.workers.dev/product/compact/")
                         //console.log(linkrep1);
@@ -86,42 +94,41 @@
                         fetch(linkrep1)
                             .then(responce => responce.json())
                             .then(finaldata => {
-                                console.log(finaldata)
+                                //console.log(finaldata)
                                 //let name = finaldata.name
                                 let rename = name.slice(0, 50);
+                                let reename= rename.replace("/", "-")
                                 // write data into firebse database by api fetch method.................................................
-                                let dburl = "https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/" + val + "/items/" + name + ".json"
+                                let dburl = "https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/" + val + "/items/" + reename + ".json"
+                                
                                 let dbdata = {
-
                                     details: finaldata
-
-
                                 }
                                 let jsonData = JSON.stringify(dbdata);
                                 let headers = {
                                     'content-Type': "application/json",
                                     'Authorization': 'AIzaSyBlSX_4ucbXP_GXckyG9qZC-1c2ARaAUKY '
                                 }
-                         async   function send(){
-                            await   fetch(dburl, {
-                                    method: 'PUT',
-                                    headeres: 'headers',
-                                    body: jsonData
-                                })
-                                    .then(response => {
-                                        if (response.ok) {
-                                            console.log('saved')
-                                            let succ = document.getElementById('succ');
-                                            succ.innerHTML = 'success';
-
-                                        } else {
-                                            // console.log('error')
-                                        }
+                                async function send() {
+                                    await fetch(dburl, {
+                                        method: 'PUT',
+                                        headeres: 'headers',
+                                        body: jsonData
                                     })
-                            
+                                        .then(response => {
+                                            if (response.ok) {
+                                                console.log('saved')
+                                                let succ = document.getElementById('succ');
+                                                succ.innerHTML = 'success';
+
+                                            } else {
+                                                 console.log('error')
+                                            }
+                                        })
+
                                 }
 
-send()
+                                send()
 
 
 
@@ -140,7 +147,7 @@ send()
 
                     }
                 });
-            console.log(val)
+            //console.log(val)
         }
 
 

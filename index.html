@@ -104,7 +104,7 @@
         </div>
         <div class="elem">
             <h4>Deals</h4>
-            <a href="?title=smartphone" title="smartphone">
+            <a href="?title=smartphones" title="smartphones">
                 <p>Smartphones</p>
             </a>
             <a href="?title=Air_Conditioners" title="air conditioners">
@@ -128,11 +128,11 @@
         </div>
         <div class="elem">
             <h4>More</h4>
-            <a href="https://www.toptechbuzz.xyz" title="toptechbuzz.xyz">
+            <a href="https://www.toptechbuzz.xyz" title="TopTechBuzz">
                 <p>TopTechBuzz</p>
             </a>
-            <a href="https://www.assamjobcircle.com" title="https://www.assamjobcircle.com/">
-                <p>Assam job Circle</p>
+            <a href="https://storywalle.blogspot.com/" title="StoryWalle Read stories">
+                <p>StoryWalle</p>
             </a>
             <a href="https://techbuzz.rf.gd" title="techbuzz">
                 <p>TechBuzz</p>
@@ -142,6 +142,8 @@
 
 </body>
 <script>
+
+
     //........................code for menu bar..........................
     async function mdata() {
         let menudata = await fetch("data/data.json")
@@ -151,12 +153,6 @@
         //console.log(nobj.length);
         let about = document.getElementsByClassName("about");
         let paara = "<p>lets do it</p>"
-
-
-
-
-
-
 
         for (let i = 0; i < nobj.length; i++) {
             let cattitle = `<h3>${nobj[i]}</h3>`;
@@ -187,34 +183,17 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     //menubar ends here......................................................
 
 
+
+
     let url = new URLSearchParams(window.location.search);
-    //console.log(window.location.pathname);
+
     let title = url.get('title');
     if (title == null) {
-        title = "Speakers";
+        title = "Electronics";
 
-
-
-
-        // let htitle=`<title>Top Tranding ${title}</title>`
-        // console.log(htitle);
-        // document.head.insertAdjacentHTML("beforeend",htitle);
     }
 
     let c = title.split("_").join(' ');
@@ -222,18 +201,10 @@
 
     //.................Meta....title....seo......................
     document.title = " Best Deals and offers on " + c;
-
-    //   let meta= `<meta content='TopTechBuzz.xyz :: Top Tranding ${ c}  ' property='og:title' />
-    //   <meta name="description" property='og: description'
-    //     content="Top selected ${ c} for the users to buy online. These are selected according to there specifications and user experiences.">
-
-    //     `
-    //   document.head.insertAdjacentHTML("beforeend",meta);
-
     let meta = document.querySelector('meta[name="description"]');
     meta.setAttribute("content", `Top selected ${c} for the users to buy online. These are selected according to there specifications and user experiences.`);
 
-
+    // insert html into the page from js code................................................
 
     let main = document.getElementById('main');
     let div = document.createElement("div");
@@ -244,214 +215,89 @@
     main.appendChild(div);
 
 
-    let obj = {
-
-    }
-
-    fetch("https://flipkart.dvishal485.workers.dev/search/" + c)
-        .then((responce) =>
-            responce.json())
-        .then((data => {
-            //console.log(data)
-            for (let i = 0; i <= 9; i++) {
-                let link = "link" + i
-                obj[link] = data.result[i].query_url
-
-            }
-
-            load()
-        })
-        )
 
 
-    function load() {
-        //console.log(obj)
-        //let main = document.getElementById('main');
+    async function getdata() {
+        let gdata = await fetch('https://filmyapp-e1005.firebaseio.com/shopsy/itemdata.json')
+        let data = await gdata.json()
 
+        let loopnum = Object.keys(data[c]['items'])
 
-        for (let i = 0; i <= 9; i++) {
-            let link = "link" + i
+        loopnum.forEach(name => {
 
-            function html(){
-    let html=`
-    <div class="ndiv">
+            function createDiv() {
+
+                let prc = data[c]['items'][name]['details']['current_price']
+                let mrp = data[c]['items'][name]['details']['original_price']
+                let rat = data[c]['items'][name]['details']['rating']
+                let dis = data[c]['items'][name]['details']['discount_percent']
+                let blink = data[c]['items'][name]['details']['share_url']
+                let linkrep = blink.replace("https://www.flipkart.com/", "https://www.shopsy.in/")
+                let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://www.shopsy.in/")
+                //console.log(blink)
+                let rep = blink.replace("https://www.flipkart.com/", "")
+                let rep1 = rep.replace("https://dl.flipkart.com/dl/", "")
+                let detailsLink = rep1.split("/").join('_');
+                let img;
+                if (data[c]['items'][name]['details']['thumbnails'][0] === undefined) {
+                    console.log('not')
+                } else {
+                    img = data[c]['items'][name]['details']['thumbnails'][0]
+                }
+
+                function lts(geth) {
+                    if (geth!=undefined) {
+                        return `${geth.map((lol) => `<li>${lol}</li>`).join("")}`
+                    }else
+                    return    `<li>Click on View details</li>`
+                }
+
+                let ndiv =
+                    `
+                    <div class="ndiv">
+                        
                 <div class="img">
-                    <img src="https://rukminim1.flixcart.com/image/416/416/l5ld8y80/smartwatch/r/q/t/-original-imagg8dksgct9hxg.jpeg?q=70"
-                        alt="Noise Icon 2 1.8'' Display with Bluetooth Calling, AI Voice Assistant &amp; 60 Sports Mode Smartwatch&nbsp;&nbsp;(Black Strap, Regular)Noise Icon 2 1.8'' Display with Bluetooth Calling, AI Voice Assistant &amp; 60 Sports Mode Smartwatch"
+                    <img src="${img}"
+                        alt="${name}"
                         loading="lazy">
                 </div>
                 <div class="details">
-                    <h2>Noise Icon 2 1.8'' Display with Bluetooth Calling, AI Voice Assistant &amp; 60 Sports Mode
-                        Smartwatch&nbsp;&nbsp;(Black Strap, Regular)Noise Icon 2 1.8'' Display with Bluetooth Calling,
-                        AI Voice Assistant &amp; 60 Sports Mode Smartwatch</h2>
-                    <p class="price">Price: 1799</p>
-                    <p class="mrp">MRP: 5999</p>
-                    <p class="rat">4.2</p><a
-                        href="https://www.shopsy.in/noise-icon-2-1-8-display-bluetooth-calling-ai-voice-assistant-60-sports-mode-smartwatch/p/itmfa97e2fcabed9?affid=bittumail"
-                        target="blank_"><button class="but">Buy Now</button></a><a
-                        href="details.html?title=noise-icon-2-1-8-display-bluetooth-calling-ai-voice-assistant-60-sports-mode-smartwatch_p_itmfa97e2fcabed9"
-                        title="Details of Noise Icon 2 1.8'' Display with Bluetooth Calling, AI Voice Assistant &amp; 60 Sports Mode Smartwatch&nbsp;&nbsp;(Black Strap, Regular)Noise Icon 2 1.8'' Display with Bluetooth Calling, AI Voice Assistant &amp; 60 Sports Mode Smartwatch"><button
-                            class="but">View Full Details</button></a>
+                    <h2>${name}</h2>
+                    <p class="price">Price: ${prc}</p>
+                    <p class="mrp">MRP: ${mrp}</p>
+                    <p class="mrp">Discount: ${dis}%</p>
+                    <p class="rat">${rat}</p><a
+                        href="${linkrep1}?&affid=inf_eda32f80-54f3-4e98-965b-0749dbdd2c8d"
+                        target="blank_">
+                        <button class="but">Buy Now</button></a>
+                        <a href="details.html?title=${detailsLink}"
+                        title="Details of ${name}">
+                        <button class="but">View Full Details</button>
+                        </a>
                     <h3>Highlights:</h3>
                     <ul>
-                        <li>1.8&amp;quot; LCD display</li>
-                        <li>Bluetooth Calling Smartwatch with AI voice assistance</li>
-                        <li>Noise Health SuiteTM: Blood Oxygen, 24*7 Heart rate monitor, Stress Monitor and Sleep
-                            Monitor</li>
-                        <li>60 Sports mode &amp; 100+ watch faces</li>
-                        <li>NoiseFit app: Pair with the improved Noisefit app for better health insights</li>
-                        <li>With Call Function</li>
-                        <li>Touchscreen</li>
-                        <li>Fitness &amp; Outdoor</li>
-                        <li>Battery Runtime: Upto 7 days</li>
+                        ${lts(data[c]['items'][name]['details']['highlights'])}
                     </ul>
                 </div>
             </div>`
-  }
 
 
-            fetch(obj[link])
-                .then((responce) =>
-                    responce.json())
-                .then((data1 => {
-
-                    
+                main.insertAdjacentHTML("beforeend", ndiv)
+            }
+            createDiv()
 
 
+            
+            
+        });
 
-
-
-                    let main = document.getElementById('main');
-                    let ndiv = document.createElement("div");
-                    let dimg = document.createElement("div");
-                    let dtls = document.createElement('div');
-                    let img = document.createElement('img');
-                    let para = document.createElement('h2');
-                    let prc = document.createElement('p');
-                    let oprc = document.createElement('p');
-                    let rat = document.createElement('p');
-                    let but = document.createElement('button');
-                    let but1 = document.createElement('button');
-                    let h2 = document.createElement('h3');
-                    let link = document.createElement("a");
-                    let link1 = document.createElement('a');
-
-                    ndiv.setAttribute('class', 'ndiv');
-                    dimg.setAttribute('class', 'img');
-                    if (data1.thumbnails[0] === undefined) {
-                        console.log('not')
-                    } else {
-                        img.setAttribute("src", data1.thumbnails[0]);
-                    }
-
-                    img.setAttribute("alt", data1.name);
-                    img.setAttribute("loading", "lazy");
-                    dtls.setAttribute('class', 'details');
-                    prc.setAttribute('class', 'price');
-                    oprc.setAttribute('class', 'mrp');
-                    rat.setAttribute('class', 'rat');
-
-                    let nppara = data1.share_url;
-                    let linkrep = nppara.replace("https://www.flipkart.com/", "https://www.shopsy.in/")
-                    let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://www.shopsy.in/")
-                    link.setAttribute('href', linkrep1 + '?&affid=inf_eda32f80-54f3-4e98-965b-0749dbdd2c8d');
-                    link.setAttribute("target", "blank_")
-
-
-
-                    let rep = nppara.replace("https://www.flipkart.com/", "")
-                    let rep1 = rep.replace("https://dl.flipkart.com/dl/", "")
-
-                    let c = rep1.split("/").join('_');
-                    //console.log(c);
-                    link1.setAttribute('href', "details.html?title=" + c);
-                    link1.setAttribute('title', "Details of " + data1.name);
-                    //console.log("link" + link)
-                    // link1.setAttribute("target", "blank_")
-                    para.innerText = data1.name;
-                    prc.innerText = "Price: " + data1.current_price;
-                    oprc.innerText = "MRP: " + data1.original_price;
-                    rat.innerText = data1.rating;
-                    but.innerText = "Buy Now";
-                    but1.innerText = "View Full Details";
-                    but.setAttribute('class', 'but');
-                    but1.setAttribute('class', 'but');
-                    h2.innerText = "Highlights:";
-
-
-
-
-
-
-
-
-                    dtls.appendChild(para);
-                    dtls.appendChild(prc);
-                    dtls.appendChild(oprc);
-                    dtls.appendChild(rat);
-                    link.appendChild(but);
-                    link1.appendChild(but1);
-                    dtls.appendChild(link);
-                    dtls.appendChild(link1);
-                    dtls.appendChild(h2);
-                    dimg.appendChild(img);
-                    ndiv.appendChild(dimg);
-                    ndiv.appendChild(dtls);
-                    main.appendChild(ndiv);
-
-
-
-
-
-
-                    let high = document.createElement('ul');
-                    dtls.appendChild(high);
-                    //console.log(data1.highlights);
-                    let highh = Object.keys(data1.highlights)
-                    //console.log(highh.length)
-
-                    for (let k = 0; k <= highh.length - 1; k++) {
-                        let li = document.createElement('li');
-                        li.innerText = data1.highlights[k];
-                        high.appendChild(li);
-                        //console.log(data1.highlights[k])
-
-                    }
-
-                }))
-
-
-
-        }
         let loadname = document.getElementById("loading");
         loadname.remove();
     }
+    getdata()
 
 
 
-
-</script>
-<script>
-    function notvisi() {
-
-        let btn = document.getElementById('ul');
-        btn.classList.toggle('notvisi');
-
-    }
-</script>
-<script>
-    // let main= document.getElementById("main");
-    async function ddata() {
-        let ldata = await fetch("https://paycode-19bb1.firebaseio.com/lol.json")
-        let gotldata = await ldata.json();
-        console.log(gotldata);
-        let ndiv = document.createElement('div');
-        ndiv.setAttribute('class', "spec")
-        ndiv.insertAdjacentHTML("beforeend", gotldata.tes.val);
-        main.appendChild(ndiv)
-    }
-  //ddata();
-  
 </script>
 
 </html>

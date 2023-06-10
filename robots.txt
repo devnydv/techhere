@@ -1,0 +1,8 @@
+User-agent: Googlebot
+Disallow: 
+User-agent: googlebot-mobile
+Disallow: 
+User-agent: *
+Disallow: 
+Disallow: /create
+Sitemap: https://techhere.pages.dev/

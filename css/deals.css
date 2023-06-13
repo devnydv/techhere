@@ -225,13 +225,13 @@
   }
   #main .ndiv h1{
     color: black;
-    font-size: 26px;
+    font-size: 23px;
     
 
   }
   #main .ndiv p{
    color: black;
-   font-size: 20px;
+   font-size: 18px;
   }
 
   #main .ndiv .details h2{
@@ -255,7 +255,7 @@
     color:black;
   }
   #main .ndiv h2{
-    font-size: 26px;
+    font-size: 22px;
     
   }
 
@@ -266,7 +266,7 @@
      margin:12px 0px 8px 0px; 
      color:black;
     text-align: justify;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 600;
     line-height: 1.0;
     text-decoration: none;

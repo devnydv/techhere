@@ -1,43 +1,43 @@
 {
     "id1": {
-        "Best Deals on Mobile": [
+        "Best Deals on Kitchen Appliances": [
             {
-                "title": "Realme Mobiles",
+                "title": "Microwave Ovens",
                 "prc": "From Rs. 5999",
                 "img": "https://rukminim1.flixcart.com/flap/240/240/image/0f46b1ccbe7d0620.jpg?q=90"
             },
             {
-                "title": "Redmi Mobiles",
+                "title": "Oven Toaster Grills",
                 "prc": "From Rs. 4599",
                 "img": "https://rukminim1.flixcart.com/flap/240/240/image/d3d04a6c6ca21475.jpg?q=90"
             },
             {
-                "title": "Narzo Mobiles",
+                "title": "Electric Kettle",
                 "prc": "From Rs. 7999",
                 "img": "https://rukminim1.flixcart.com/flap/240/240/image/f40c586fa2ac65af.jpg?q=90"
             },
             {
-                "title": "Samsung Mobiles",
+                "title": "Hand Blenders",
                 "prc": "From Rs. 5,999",
                 "img": "https://rukminim1.flixcart.com/flap/240/240/image/aded412f9993539a.jpg?q=90"
             },
             {
-                "title": "Infinix Mobiles",
+                "title": "Pop Up Toasters",
                 "prc": "From Rs. 6,999",
                 "img": "https://rukminim1.flixcart.com/image/312/312/krtjgcw0/mobile/s/8/9/smart-5a-x657c-infinix-original-imag5gnzeygmt9fh.jpeg?q=10"
             },
             {
-                "title": "Oppo Mobiles",
+                "title": "Coffee Makers",
                 "prc": "From Rs. 7,999",
                 "img": "https://rukminim1.flixcart.com/image/312/312/kb1470w0/mobile/z/x/j/oppo-a12-cph2083-original-imafsh2hmjbxtvxy.jpeg?q=20"
             },
             {
-                "title": "Iphone",
+                "title": "Chimneys",
                 "prc": "From Rs. 45,999",
                 "img": "https://rukminim1.flixcart.com/image/416/416/k0lbdzk0pkrrdj/mobile/s/p/d/apple-iphone-xr-mry42hn-a-original-imafbhyw3tzdysun.jpeg?q=20"
             },
             {
-                "title": "Vivo",
+                "title": "Sandwich Makers",
                 "prc": "From Rs. 7,999",
                 "img": "https://rukminim1.flixcart.com/image/312/312/k2jbyq80pkrrdj/mobile-refurbished/j/g/f/y90-16-c-1908-vivo-2-original-imafjbswdrerjk7a.jpeg?q=20"
             }
@@ -75,16 +75,8 @@
             }
         ],
         "Best Deals on Accessories": [
-            {
-                "title": "Power Bank",
-                "prc": "From Rs. 1999",
-                "img": "https://rukminim1.flixcart.com/image/312/312/jmi22kw0/smartwatch/t/g/y/mtf02hn-a-apple-original-imaf9ec8nh6sscfh.jpeg?q=10"
-            },
-            {
-                "title": "Data Cable",
-                "prc": "From Rs. 49",
-                "img": "https://res.cloudinary.com/dqmlkqhwx/image/upload/c_scale,h_200,w_200/v1631891360/indexpage/backcase.jpg"
-            },
+            
+            
             {
                 "title": "Power Bank",
                 "prc": "From Rs. 199",
@@ -100,15 +92,16 @@
                 "prc": "From Rs. 149",
                 "img": "https://res.cloudinary.com/dqmlkqhwx/image/upload/c_scale,h_250,w_200/v1631892716/indexpage/charger.jpg"
             },
+            
             {
                 "title": "Mouse",
-                "prc": "From Rs. 199",
-                "img": "https://res.cloudinary.com/dqmlkqhwx/image/upload/c_scale,h_240,w_200/v1631892873/indexpage/memory.jpg"
+                "prc": "From Rs. 49",
+                "img": "https://rukminim1.flixcart.com/image/612/612/knrsjgw0/screen-guard/edge-to-edge-tempered-glass/h/z/9/motog60-kih-clr-05-hobbytronics-original-imag2dhjvw3gmjuz.jpeg?q=10"
             },
             {
                 "title": "Keyboard",
-                "prc": "From Rs. 49",
-                "img": "https://rukminim1.flixcart.com/image/612/612/knrsjgw0/screen-guard/edge-to-edge-tempered-glass/h/z/9/motog60-kih-clr-05-hobbytronics-original-imag2dhjvw3gmjuz.jpeg?q=10"
+                "prc": "From Rs. 999",
+                "img": "https://rukminim1.flixcart.com/image/312/312/k4bms280/external-hard-drive/hdd/q/2/a/wd-wdbyft0040bbk-original-imafmey87zxtvxen.jpeg?q=10"
             },
             {
                 "title": "Hair Dryers",

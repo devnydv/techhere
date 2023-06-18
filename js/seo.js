@@ -16,3 +16,11 @@ let meta = document.createElement('meta');
 meta.name = "descriptione";
 meta.content = `Top selected Best Deals on ${c} for the users to buy online. These are selected according to there specifications and user experiences.`;
 document.getElementsByTagName('head')[0].appendChild(meta);
+
+//manu bar togle
+function notvisi() {
+
+    let btn = document.getElementById('ul');
+    btn.classList.toggle('notvisi');
+
+}

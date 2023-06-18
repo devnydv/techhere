@@ -13,7 +13,7 @@
   gtag('config', 'G-MMN4WWQJ9G');
 </script> -->
     <!-- Google tag (gtag.js) -->
-
+    <script src="js/seo.js"></script>
 
     <meta content='index,follow' name='robots' />
     <meta content='Dev Nararan Yadav' name='author' />
@@ -21,7 +21,7 @@
     <meta content='en' name='language' />
     <meta content='IN' name='country' />
 
-    <meta property="og:locale" content="en">
+    <meta property="og:locale" content="en_In">
     <meta property="og:type" content="article">
 
 
@@ -33,10 +33,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Top selected items for the users to buy online. These are selected according to there specifications and user experiences.">
+
     <link rel="stylesheet" href="css/test.css">
-    <title>Techhere: Find best deals and offers</title>
+
 </head>
 
 <body>
@@ -45,17 +44,16 @@
         <div id="logo">
 
 
-            <img id="mnicon" src="icons/menu_black_24dp.svg" alt="menu" onclick="notvisi()">
+            <!-- <img id="mnicon" src="icons/menu_black_24dp.svg" alt="" onclick="notvisi()"> -->
             <a href="/" title="Techhere">
+
                 <h1>Techhere</h1>
             </a>
         </div>
         <div id="menug">
             <ul id="ul" class="notvisi">
                 <a href="/" title="toptechbuzz">
-                    
                     <li>Home</li>
-                        
                 </a>
                 <!--     <a href="blog.html" title="tech blogs and products">
           <li>Blog</li>
@@ -88,6 +86,7 @@
 
 
         <div id="main">
+
 
 
 
@@ -144,8 +143,6 @@
 
 </body>
 <script>
-
-
     //........................code for menu bar..........................
     async function mdata() {
         let menudata = await fetch("data/data.json")
@@ -155,6 +152,12 @@
         //console.log(nobj.length);
         let about = document.getElementsByClassName("about");
         let paara = "<p>lets do it</p>"
+
+
+
+
+
+
 
         for (let i = 0; i < nobj.length; i++) {
             let cattitle = `<h3>${nobj[i]}</h3>`;
@@ -185,28 +188,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     //menubar ends here......................................................
 
 
 
-
-    let url = new URLSearchParams(window.location.search);
-
-    let title = url.get('title');
-    if (title == null) {
-        title = "Electronics";
-
-    }
-
-    let c = title.split("_").join(' ');
-    console.log(c);
-
-    //.................Meta....title....seo......................
-    document.title = " Best Deals and offers on " + c;
-    let meta = document.querySelector('meta[name="description"]');
-    meta.setAttribute("content", `Top selected ${c} for the users to buy online. These are selected according to there specifications and user experiences.`);
-
-    // insert html into the page from js code................................................
+    // insert html into the page from  code................................................
 
     let main = document.getElementById('main');
     let div = document.createElement("div");
@@ -218,53 +217,59 @@
 
 
 
+    // main copntent page..............................................
 
     async function getdata() {
         let gdata = await fetch(`https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/${c}.json`)
         let data = await gdata.json()
-console.log(data)
+        //console.log(data)
         let loopnum = Object.keys(data['items'])
 
-        loopnum.forEach(name => {
+        let vall = loopnum.length;
+        console.log(vall);
+        let a = 0;
+        let b = 5;
 
+        function load() {
             function createDiv() {
+                for (let i = a; i < a + b; i++) {
+                    let name = loopnum[i]
 
-                let prc = data['items'][name]['details']['current_price']
-                let mrp = data['items'][name]['details']['original_price']
-                let rat = data['items'][name]['details']['rating']
-                let dis = data['items'][name]['details']['discount_percent']
-                let blink = data['items'][name]['details']['share_url']
-                let linkrep = blink.replace("https://www.flipkart.com/", "https://www.shopsy.in/")
-                let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://www.shopsy.in/")
-                //console.log(blink)
-                let rep = blink.replace("https://www.flipkart.com/", "")
-                let rep1 = rep.replace("https://dl.flipkart.com/dl/", "")
-                let detailsLink = rep1.split("/").join('_');
-                let img;
-                if (data['items'][name]['details']['thumbnails'][0] === undefined) {
-                    console.log('not')
-                } else {
-                    img = data['items'][name]['details']['thumbnails'][0]
-                }
 
-                function lts(geth) {
-                    if (geth != undefined) {
-                        return `${geth.map((lol) => `<li>${lol}</li>`).join("")}`
-                    } else
-                        return `<li>Click on View details</li>`
-                }
+                    let prc = data['items'][name]['details']['current_price']
+                    let mrp = data['items'][name]['details']['original_price']
+                    let rat = data['items'][name]['details']['rating']
+                    let dis = data['items'][name]['details']['discount_percent']
+                    let blink = data['items'][name]['details']['share_url']
+                    let linkrep = blink.replace("https://www.flipkart.com/", "https://www.shopsy.in/")
+                    let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://www.shopsy.in/")
+                    //console.log(blink)
+                    let rep = blink.replace("https://www.flipkart.com/", "")
+                    let rep1 = rep.replace("https://dl.flipkart.com/dl/", "")
+                    let detailsLink = rep1.split("/").join('_');
+                    let img;
+                    if (data['items'][name]['details']['thumbnails'][0] === undefined) {
+                        console.log('not')
+                    } else {
+                        img = data['items'][name]['details']['thumbnails'][0]
+                    }
 
-                let ndiv =
-                    `
-                    <div class="ndiv">
-                        
-                <div class="img">
-                    <img src="${img}"
-                        alt="${name}"
-                        loading="lazy">
-                </div>
-                <div class="details">
-                    <h2>${name}</h2>
+                    function lts(geth) {
+                        if (geth != undefined) {
+                            return `${geth.map((lol) => `<li>${lol}</li>`).join("")}`
+                        } else
+                            return `<li>Click on View details</li>`
+                    }
+
+                    let ndiv =
+                        `
+    <div class="ndiv">
+        
+            <div class="img">
+                <img src="${img}" alt="${name}" loading="lazy">
+            </div>
+            <div class="details">
+                <h2>${name}</h2>
                     <p class="price">Price: ${prc}</p>
                     <p class="mrp"><s>MRP: ${mrp}</s></p>
                     <p class="mrp">Discount: ${dis}%</p>
@@ -272,33 +277,83 @@ console.log(data)
                     <a href="${linkrep1}?&affid=inf_eda32f80-54f3-4e98-965b-0749dbdd2c8d" target="blank_">
                         <button class="but">Buy Now(Shopsy)</button>
                     </a>
-                    <a href="${blink}?&affid=inf_eda32f80-54f3-4e98-965b-0749dbdd2c8d" target="blank_">
-                        <button class="but">Buy Now(Flipkart)</button>
-                    </a>
-                        <a href="details.html?title=${detailsLink}" title="Details of ${name}">
-                        <button class="but">View Full Details</button>
-                        </a>
-                    <h3>Highlights:</h3>
-                    <ul>
-                        ${lts(data['items'][name]['details']['highlights'])}
-                    </ul>
+                <a href="${blink}?&affid=inf_eda32f80-54f3-4e98-965b-0749dbdd2c8d" target="blank_">
+                <button class="but">Buy Now(Flipkart)</button>
+                </a>
+                <a href="details.html?title=${detailsLink}" title="Details of ${name}">
+                <button class="but">View Full Details</button>
+                </a>
+            <h3>Highlights:</h3>
+            <ul>
+        ${lts(data['items'][name]['details']['highlights'])}
+            </ul>
                 </div>
-            </div>`
+                    </div>`
 
 
-                main.insertAdjacentHTML("beforeend", ndiv)
+                    main.insertAdjacentHTML("beforeend", ndiv)
+
+
+
+
+                }
             }
             createDiv()
+            // let btn = document.getElementById("btn");
+            // btn.addEventListener("click", load)
+
+            a = a + b;
+            let dif = vall - a;
+
+            console.log(dif)
+            //console.log(a)
+            //console.log(dif+'difval')
+            if (5 > dif) {
+                a = a
+                b = dif;
 
 
 
 
-        });
 
-        let loadname = document.getElementById("loading");
-        loadname.remove();
+            }
+            if (dif == 0) {
+                //let btn = document.getElementById("btn");
+                //btn.innerText = "No More Tech Found...";
+                //console.log(btn)
+                //console.log(dif+'disavle');
+                //document.getElementById("btn").disabled = true;
+            }
+            function isScrolledToBottom() {
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var visibleHeight = document.documentElement.clientHeight;
+                var totalHeight = document.documentElement.scrollHeight;
+                return (scrollTop + visibleHeight) >= totalHeight;
+            }
+
+            window.addEventListener('scroll', function () {
+
+                if (isScrolledToBottom()) {
+
+
+                    load();
+                }
+            });
+        }
+
+        load()
+
     }
     getdata()
+
+
+
+
+
+    let loadname = document.getElementById("loading");
+    loadname.remove();
+
+
 
 
 
@@ -311,4 +366,19 @@ console.log(data)
 
     }
 </script>
+<script>
+    // let main= document.getElementById("main");
+    async function ddata() {
+        let ldata = await fetch("https://paycode-19bb1.firebaseio.com/lol.json")
+        let gotldata = await ldata.json();
+        console.log(gotldata);
+        let ndiv = document.createElement('div');
+        ndiv.setAttribute('class', "spec")
+        ndiv.insertAdjacentHTML("beforeend", gotldata.tes.val);
+        main.appendChild(ndiv)
+    }
+  //ddata();
+
+</script>
+
 </html>

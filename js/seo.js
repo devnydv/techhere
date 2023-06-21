@@ -13,7 +13,7 @@ let url = new URLSearchParams(window.location.search);
     document.title = " Best Deals and offers on " + c;
 
 let meta = document.createElement('meta');
-meta.name = "descriptione";
+meta.name = "description";
 meta.content = `Top selected Best Deals on ${c} for the users to buy online. These are selected according to there specifications and user experiences.`;
 document.getElementsByTagName('head')[0].appendChild(meta);
 

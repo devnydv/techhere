@@ -22,19 +22,16 @@
     <meta content='IN' name='country' />
 
     <meta property="og:locale" content="en">
-    <meta property="og:type" content="article">
-
-
     <meta name='Keywords'
         content='Best Deals on Top Mobile Brands, Deals, flipkart deals, all flipkart product, online deals, deals on mobiles, deals on earphones, laptops, Gaming_Laptops, DSLR, Printers, Inks, Back_Cases' />
 
-    <meta http-equiv='content-language' content='en'>
+    <meta http-equiv='content-language' content='en-in'>
     <link rel="shortcut icon" href="icons/icon.webp" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -52,7 +49,7 @@
         </div>
         <div id="menug">
             <ul id="ul" class="notvisi">
-                <a href="/" title="toptechbuzz">
+                <a href="/" title="techbuzz">
                     <li>Home</li>
                 </a>
                 <!--     <a href="blog.html" title="tech blogs and products">
@@ -86,7 +83,24 @@
 
 
         <div id="main">
-
+            <div class="ndiv">
+                <div class="img">
+                    <img src="icons/demo.svg" alt="loading" srcset="">
+                </div>
+                <div class="details">
+                    <p>Loading Deals for you</p>
+                    <p>Please wait....</p>
+                </div>
+            </div>
+            <div class="ndiv">
+                <div class="img">
+                    <img src="icons/demo.svg" alt="loading" srcset="">
+                </div>
+                <div class="details">
+                    <p>Loading Deals for you</p>
+                    <p>Please wait....</p>
+                </div>
+            </div>
 
 
 
@@ -151,7 +165,6 @@
         let nobj = Object.keys(gotmdata.id1)
         //console.log(nobj.length);
         let about = document.getElementsByClassName("about");
-        let paara = "<p>lets do it</p>"
 
 
 
@@ -213,18 +226,19 @@
     div.setAttribute("id", 'head')
     h1.innerText = "Best Deals on " + c;
     div.appendChild(h1)
-    main.appendChild(div);
+    
 
 
 
     // main copntent page..............................................
 
     async function getdata() {
-        let gdata = await fetch(`https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/${c}.json`)
+        let gdata = await fetch(`https://filmyapp-e1005.firebaseio.com/short/itemdata/${c}.json`)
         let data = await gdata.json()
         //console.log(data)
         let loopnum = Object.keys(data['items'])
-
+        main.innerHTML = "";
+        main.appendChild(div);
         let vall = loopnum.length;
         console.log(vall);
         let a = 0;
@@ -233,14 +247,14 @@
         function load() {
             function createDiv() {
                 for (let i = a; i < a + b; i++) {
-                    let name = loopnum[i]
+                    let name = data['items'][i]['name']
 
 
-                    let prc = data['items'][name]['details']['current_price']
-                    let mrp = data['items'][name]['details']['original_price']
-                    let rat = data['items'][name]['details']['rating']
-                    let dis = data['items'][name]['details']['discount_percent']
-                    let blink = data['items'][name]['details']['share_url']
+                    let prc = data['items'][i]['current_price']
+                    let mrp = data['items'][i]['original_price']
+                    let rat = data['items'][i]['rating']
+                    let dis = data['items'][i]['discount_percent']
+                    let blink = data['items'][i]['share_url']
                     let linkrep = blink.replace("https://www.flipkart.com/", "https://www.shopsy.in/")
                     let linkrep1 = linkrep.replace("https://dl.flipkart.com/dl/", "https://www.shopsy.in/")
                     //console.log(blink)
@@ -248,10 +262,10 @@
                     let rep1 = rep.replace("https://dl.flipkart.com/dl/", "")
                     let detailsLink = rep1.split("/").join('_');
                     let img;
-                    if (data['items'][name]['details']['thumbnails'][0] === undefined) {
+                    if (data['items'][i]['thumbnails'] === undefined) {
                         console.log('not')
                     } else {
-                        img = data['items'][name]['details']['thumbnails'][0]
+                        img = data['items'][i]['thumbnails']
                     }
 
                     function lts(geth) {
@@ -283,10 +297,8 @@
                 <a href="details.html?title=${detailsLink}" title="Details of ${name}">
                 <button class="but">View Full Details</button>
                 </a>
-            <h3>Highlights:</h3>
-            <ul>
-        ${lts(data['items'][name]['details']['highlights'])}
-            </ul>
+            
+           
                 </div>
                     </div>`
 

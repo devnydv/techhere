@@ -209,16 +209,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
     //menubar ends here......................................................
 
 
@@ -233,7 +223,17 @@
     div.appendChild(h1)
     
 
+////breadcrumb
+let nav=` <nav id="breadcrumb">
+                <a href="https://techhere.pages.dev/">
+                    Home</a>
+                <em class="delimiter">&gt;</em>
+                <a class="b-label" href="https://techhere.pages.dev/${title}">${c}</a>
+                <em class="delimiter">&gt; </em>
+                <span class="current"> Best Deals on ${c}</span>
+            </nav>`
 
+console.log(nav)
 
     // main copntent page..............................................
 
@@ -243,6 +243,7 @@
         //console.log(data)
         let loopnum = Object.keys(data['items'])
         main.innerHTML = "";
+        main.insertAdjacentHTML("afterbegin", nav)
         main.appendChild(div);
         let vall = loopnum.length;
         console.log(vall);

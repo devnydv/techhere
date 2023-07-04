@@ -221,6 +221,13 @@
       
       
     }
+    #main #breadcrumb{
+      margin: 3px;
+    }
+    #main #breadcrumb a{
+      color: rgb(65, 62, 62);
+      text-decoration: none;
+    }
 
     #main #head{
         text-align: center;
@@ -257,7 +264,7 @@
       #main .ndiv h1{
         padding-bottom:4px ;
         color: black;
-        font-size: 26px;
+        font-size: 24px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -288,11 +295,11 @@
         margin:10px 10px 0px 0px;
         font-weight: bolder;
         text-align: justify;
-         font-size: 22px; 
+         font-size: 20px; 
         color:black;
       }
       #main .ndiv h2{
-        font-size: 26px;
+        font-size: 24px;
         
       }
     
@@ -303,7 +310,7 @@
          margin:12px 0px 8px 0px; 
          color:black;
         text-align: justify;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 600;
         line-height: 1.0;
         text-decoration: none;
@@ -316,10 +323,10 @@
     
       #main .ndiv .details .but{
       background-color: rgb(134, 174, 235);
-      font-size: 20px;
+      font-size: 18px;
       padding: 8px;
-      margin: 15px 0px;
-      border-radius: 15px;
+      margin: 14px 0px;
+      border-radius: 14px;
       display: block;
       }
       #main .ndiv .details a{
@@ -342,17 +349,17 @@
       }*/
       #main .ndiv .img{
         display: flex;
-        min-height: 250px;
-        max-height: 280px;
-        min-width: 200px;
+        min-height: 220px;
+        max-height: 260px;
+        min-width: 180px;
         margin: 10px;
         justify-content: center;  
         align-items: center;
         
       }
       #main .ndiv .img img{
-        max-height: 250px;
-        max-width: 200px;
+        max-height: 220px;
+        max-width: 170px;
         
       
       }

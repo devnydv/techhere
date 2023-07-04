@@ -1,7 +1,7 @@
 User-agent: Googlebot
 Disallow: 
 User-agent: googlebot-mobile
-Disallow: 
+Disallow: /short
 User-agent: *
 Disallow: 
 Disallow: /create

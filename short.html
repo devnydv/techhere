@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create in databse</title>
+    <style>
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="butt"></div>
+
+    <p id="succ"></p>
+
+
+    <script>
+
+        // list of the buttons or category names that are required....................................        
+        let data = {
+            0: "Microwave Ovens",
+            1: "Oven Toaster Grills",
+            2: "Electric Kettle",
+            3: "Hand Blenders",
+            4: 'Pop Up Toasters',
+            5: "Coffee Makers",
+            6: "Chimneys",
+            7: "Sandwich Makers",
+
+            8: "Wired Earphones",
+            9: "Neckband",
+            10: "Airpods",
+            11: "Headset",
+            12: "TWS",
+            13: "Wired Headphones",
+
+            14: 'Power Bank',
+            15: 'Data Cable',
+            16: 'Chargers',
+            17: 'Mouse',
+            18: 'Keyboard',
+            19: 'Hair Dryers',
+            20: 'Electronics',
+            21: "smartphones",
+            22: "Air Conditioners",
+            23: 'Refrigerators',
+            24: 'Kitchen Appliances'
+        }
+
+
+
+        //select the div and create a button that trigers lol function that fatch the search link......................................
+
+        let dataLength = Object.keys(data)
+        //console.log(dataLength)
+        let div = document.getElementById("butt");
+
+
+
+        dataLength.forEach(num => {
+
+
+            function cbutt() {
+                let butthtmll = `<button value="${data[num]}" onclick="lol(this.value)">${data[num]}</button>`
+                div.insertAdjacentHTML("beforeend", butthtmll)
+            }
+            cbutt()
+        });
+
+        // created a function that runs when the button is clicked and it fetch the serch link .....................................
+        async function lol(val) {
+
+            fetch(`https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/${val}.json`)
+                .then(responce => responce.json())
+                .then(finaldata => {
+                    //console.log(Object.keys(finaldata.items));
+                    let namenum = Object.keys(finaldata.items);
+                    let legthnum = namenum.length;
+
+                    for (let i = 0; i < legthnum; i++) {
+                        let name = namenum[i]
+                        console.log(finaldata.items[name].details)
+                        let itemdtls = finaldata.items[name].details
+                        // write data into firebse database by api fetch method.................................................
+                        let dburl = `https://filmyapp-e1005.firebaseio.com/short/itemdata/${val}/items/${i}.json`
+
+                        let dbdata = {
+                            name: name,
+                            current_price: itemdtls.current_price,
+                            original_price: itemdtls.original_price,
+                            discount_percent: itemdtls.discount_percent,
+                            rating: itemdtls.rating,
+                            thumbnails: itemdtls.thumbnails[0],
+                            share_url: itemdtls.share_url
+
+                        }
+                        console.log(dburl)
+                        let jsonData = JSON.stringify(dbdata);
+                        let headers = {
+                            'content-Type': "application/json",
+                            'Authorization': 'AIzaSyBlSX_4ucbXP_GXckyG9qZC-1c2ARaAUKY '
+                        }
+                        async function send() {
+                            await fetch(dburl, {
+                                method: 'PUT',
+                                headeres: 'headers',
+                                body: jsonData
+                            })
+                                .then(response => {
+                                    if (response.ok) {
+                                        console.log('saved')
+                                        let succ = document.getElementById('succ');
+                                        succ.innerHTML = 'success';
+
+                                    } else {
+                                        console.log('error')
+                                    }
+                                })
+
+                        }
+
+                         send()
+
+                    }
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+            //console.log(val)
+
+
+
+
+    </script>
+</body>
+
+</html>

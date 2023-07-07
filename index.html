@@ -225,12 +225,28 @@
 
 ////breadcrumb
 let nav=` <nav id="breadcrumb">
-                <a href="https://techhere.pages.dev/">
+              <ol>
+                <li>
+               <a href="https://techhere.pages.dev/">
                     Home</a>
+                    </li>
+                    </ol>
                 <em class="delimiter">&gt;</em>
+                <ol>
+                  <li>
+                
                 <a class="b-label" href="https://techhere.pages.dev/?title=${title}">${c}</a>
+                </li>
+                </ol>
                 <em class="delimiter">&gt; </em>
-                <span class="current"> Best Deals on ${c}</span>
+                <ol>
+                  
+                
+                <li class="current"> Best Deals on ${c}
+                </li>
+                </ol>
+                  
+                
             </nav>`
 
 console.log(nav)

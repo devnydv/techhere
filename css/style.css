@@ -221,15 +221,27 @@
       
       
     }
-    #main #breadcrumb{
-      margin: 3px;
+
+#main nav{
+      display: flex;
+      margin: 4px;
     }
-    #main #breadcrumb a{
-      color: rgb(65, 62, 62);
+    
+    
+    #main nav ol li{
+      list-style-type: none;
+      
+    }
+    #main nav ol li a{
+      font-size: 16px;
+      color: black ;
       text-decoration: none;
+      margin: 0px 3px;
     }
 
-    #main #head{
+
+
+   #main #head{
         text-align: center;
         margin-top: 10px;
       }

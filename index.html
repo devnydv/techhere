@@ -244,7 +244,33 @@ let nav=` <nav id="breadcrumb">
             </nav>`
 
 console.log(nav)
+    
+// breadcrumbs ....................................
 
+let src= document.createElement('script');
+let schema= 
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://techhere.pages.dev/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": `${c}`,
+        "item": `https://techhere.pages.dev/?title=${title}`
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": `Best Deals on ${c}`
+      }]
+    }
+src.setAttribute('type', 'application/ld+json');
+src.textContent = JSON.stringify(schema);
+document.head.appendChild(src);
     // main copntent page..............................................
 
     async function getdata() {

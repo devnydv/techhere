@@ -287,6 +287,18 @@ document.head.appendChild(src);
         let b = 5;
 
         function load() {
+//obj for item list schema......................
+            let obj = {
+
+                "@context": "https://schema.org/",
+                "@type": "ItemList",
+                "itemListElement": [
+                    {   
+                    },   
+                ]
+            };
+
+            
             function createDiv() {
                 for (let i = a; i < a + b; i++) {
                     let name = data['items'][i]['name']
@@ -345,9 +357,20 @@ document.head.appendChild(src);
                     main.insertAdjacentHTML("beforeend", ndiv)
 
 
-
+ //inser data into obj for schema///////////////
+                    obj.itemListElement[i] = {
+                        "@type": "ListItem",
+                        "position": i,
+                        "name": `${name}`,
+                        "url": `https://techhere.pages.dev/details.html?cat=${c}&title=${detailsLink}`
+                    };
 
                 }
+                // schema data for itemslist ..............................................
+                let itemlist = document.createElement('script');
+                itemlist.setAttribute('type', 'application/ld+json');
+                itemlist.textContent = JSON.stringify(obj);
+                document.head.appendChild(itemlist);
             }
             createDiv()
             // let btn = document.getElementById("btn");

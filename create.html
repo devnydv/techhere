@@ -100,7 +100,8 @@
                                     console.log("error");
                                 }else{
                                 let rename = name.slice(0, 50);
-                                let reename= rename.replace("/", "-")
+                                let reename= rename.replace("/", "-");
+                                    reename = rename.toLowerCase();
                                 // write data into firebse database by api fetch method.................................................
                                 let dburl = "https://filmyapp-e1005.firebaseio.com/shopsy/itemdata/" + val + "/items/" + reename + ".json"
                                 

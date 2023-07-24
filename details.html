@@ -126,7 +126,7 @@
                 let gettitle = gotmdata.id1[nobj[i]][valinner].title;
                 let c = gettitle.split(" ").join('_');
 
-                let link = `<a href=?title=${c} title="${c}">
+                let link = `<a href=/?title=${c} title="${c}">
           <p>${gotmdata.id1[nobj[i]][valinner].title}</p>
             </a>`
                 about[0].insertAdjacentHTML('beforeend', link)

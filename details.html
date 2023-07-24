@@ -97,8 +97,54 @@
     //     document.head.insertAdjacentElement("beforeend", meta);
 
     //........................code for menu bar..........................
-    import mdata from "./js/menu.js";
-    mdata()
+     //........................code for menu bar..........................
+    async function mdata() {
+        let menudata = await fetch("data/data.json")
+        let gotmdata = await menudata.json();
+        //console.log(gotmdata);
+        let nobj = Object.keys(gotmdata.id1)
+        //console.log(nobj.length);
+        let about = document.getElementsByClassName("about");
+
+
+
+
+
+
+
+        for (let i = 0; i < nobj.length; i++) {
+            let cattitle = `<h3>${nobj[i]}</h3>`;
+            about[0].insertAdjacentHTML('beforeend', cattitle)
+
+
+
+            let lgtinner = Object.keys(gotmdata.id1[nobj[i]])
+            //console.log(lgtinner.length)
+            for (let j = 0; j < lgtinner.length; j++) {
+                let valinner = lgtinner[j]
+
+                let gettitle = gotmdata.id1[nobj[i]][valinner].title;
+                let c = gettitle.split(" ").join('_');
+
+                let link = `<a href=?title=${c} title="${c}">
+          <p>${gotmdata.id1[nobj[i]][valinner].title}</p>
+            </a>`
+                about[0].insertAdjacentHTML('beforeend', link)
+                //console.log(link);
+            }
+
+        }
+    }
+    mdata();
+
+
+
+
+
+
+
+
+    //menubar ends here......................................................
 
 
 

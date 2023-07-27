@@ -85,7 +85,9 @@
     //title of the page.....................................SEO.........
     let url = new URLSearchParams(window.location.search);
     let title = url.get('title');
-    let c = title.split("-").join(' ');
+    let c=title;
+
+    //let c = title.split("-").join(' ');
     //let s = title.substring(0, title.indexOf('_'));
     console.log(c)
     document.title = "Deals Details of " + c;
@@ -151,6 +153,7 @@
     let cat = url.get('cat');
         cat= cat.split("_").join(' ');
     let para = c.split("-").join(' ');
+    para= c
     //para= para.slice(0, 50);
     console.log("this is para" + para)
     async function gdata() {

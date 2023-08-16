@@ -235,7 +235,71 @@
 
 
         }
+let offlngth = data.offers.length
 
+let offerh2 = document.createElement('h2');
+
+
+
+        offerh2.innerText = 'Offers:'
+
+
+
+
+
+        let offdiv = document.createElement('div');
+
+        let offdetais = document.createElement('div')
+
+
+
+        offdiv.setAttribute('class', 'spec');
+
+        offdetais.setAttribute('class', 'details');
+
+        offdiv.appendChild(offerh2);
+
+
+
+        main.appendChild(offdiv);
+
+
+
+
+
+        //console.log(ndivv);
+
+        for (let i = 0; i <= offlngth - 1; i++) {
+
+            let spec = document.createElement("h3");
+
+            let specdtls = document.createElement("p");
+
+
+
+            specdtls.innerText = data.offers[i]
+
+            //specdtls.setAttribute('class', 'mrp');
+
+
+
+
+
+            // dtls.appendChild(spec)
+
+            // dtls.appendChild(specdtls)
+
+            offdiv.appendChild(spec)
+
+            offdiv.appendChild(specdtls)
+
+
+
+
+
+
+
+                }
 
 
 

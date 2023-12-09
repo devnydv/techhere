@@ -363,8 +363,8 @@ document.body.insertAdjacentHTML("beforeend", imphtml)
 
 
 
-    // let loadname = document.getElementById("loading");
-    // loadname.remove();
+     let loadname = document.getElementById("loading");
+     loadname.remove();
 
 
 
